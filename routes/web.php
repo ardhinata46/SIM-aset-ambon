@@ -605,4 +605,5 @@ Route::group(
 // Route Jemaat
 Route::prefix('/')->group(function () {
     Route::get('/informasi-barang/{id_item_barang}', [UserInventarisBarangController::class, 'info'])->name('barang.info');
+
 });

@@ -15,7 +15,7 @@ class PeminjamanBarangController extends Controller
 {
     public function index()
     {
-        $title = 'Peminjaman Barang | Invetaris GPIBI AA';
+        $title = 'Peminjaman Barang ';
         $peminjamanBarang = PeminjamanBarang::with('pengembalianBarang')->orderBy('status', 'asc')->latest()->get();
 
         return view('sa.content.peminjaman-barang.list', compact('title', 'peminjamanBarang'));
