@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\SuperAdmin\PeminjamanBarang;
 
 use App\Http\Controllers\Controller;
+use App\Models\Barang;
 use App\Models\ItemPeminjamanBarang;
 use App\Models\PeminjamanBarang;
 use App\Models\PengembalianBarang;
@@ -29,12 +30,55 @@ class PengembalianBarangController extends Controller
 
     public function add()
     {
-        $peminjaman = PeminjamanBarang::where('status', 0)->get();
+        $peminjaman = PeminjamanBarang::select(
+            'peminjaman_barangs.*',
+            'peminjaman_barangs.kode_peminjaman_barang',
+            'peminjaman_barangs.status as status_barang',
+            'item_peminjaman_barangs.*',
+            'item_barangs.*')
+            ->join('item_peminjaman_barangs', 'item_peminjaman_barangs.id_peminjaman_barang', '=', 'peminjaman_barangs.id_peminjaman_barang')
+            ->join('item_barangs', 'item_barangs.id_item_barang', '=', 'item_peminjaman_barangs.id_item_barang')
+            ->where('peminjaman_barangs.status', 0)->get();
+
+        $dataPeminjaman = [];
+
+        foreach ($peminjaman as $row) {
+            $idPeminjaman = $row->id_peminjaman_barang;
+
+            if (!isset($dataPeminjaman[$idPeminjaman])) {
+                $dataPeminjaman[$idPeminjaman] = [
+                    'id_peminjaman_barang' => $row->id_peminjaman_barang,
+                    'kode_peminjaman_barang' => $row->kode_peminjaman_barang,
+                    'tanggal' => $row->tanggal,
+                    'status_barang' => $row->status_barang,
+                    'nama_peminjam' => $row->nama_peminjam,
+                    'kontak' => $row->kontak,
+                    'alamat' => $row->alamat,
+                    'jaminan' => $row->jaminan,
+                    'item_barang' => [
+                        [
+                            'kode_item_barang' => $row->kode_item_barang,
+                            'nama_item_barang' => $row->nama_item_barang,
+                            'merk_item_barang' => $row->merk
+                        ],
+                    ],
+                ];
+            } else {
+                $dataPeminjaman[$idPeminjaman]['item_barang'][] = [
+                    'kode_item_barang' => $row->kode_item_barang,
+                    'nama_item_barang' => $row->nama_item_barang,
+                    'merk_item_barang' => $row->merk
+                ];
+            }
+        }
+
+        $dataPeminjaman = array_values($dataPeminjaman);
+
         $title = 'Tambah Pengambalian Barang ';
 
         $nextKodePengembalianBarang = PengembalianBarang::generateKodePengembalianBarang();
 
-        return view('sa.content.pengembalian-barang.add', compact('title', 'peminjaman', 'nextKodePengembalianBarang'));
+        return view('sa.content.pengembalian-barang.add', compact('title', 'peminjaman', 'nextKodePengembalianBarang', 'dataPeminjaman'));
     }
 
     public function store(Request $request)
@@ -61,7 +105,7 @@ class PengembalianBarangController extends Controller
 
             $pengembalianBarang->save();
 
-            // Perbarui status peminjaman 
+            // Perbarui status peminjaman
             $statusPeminjaman = PeminjamanBarang::find($request->id_peminjaman_barang);
             $statusPeminjaman->status = $pengembalianBarang->status ?? 1;
             $statusPeminjaman->save();
@@ -120,7 +164,7 @@ class PengembalianBarangController extends Controller
         $pengembalianBarang = PengembalianBarang::findOrFail($id_pengembalian_barang);
 
         $peminjamanSebelumnya = PeminjamanBarang::findOrFail($pengembalianBarang->id_peminjaman_barang);
-        $peminjamanSekarang =  PeminjamanBarang::findOrFail($request->id_peminjaman_barang);
+        $peminjamanSekarang = PeminjamanBarang::findOrFail($request->id_peminjaman_barang);
         $created = $pengembalianBarang->created_by;
 
 

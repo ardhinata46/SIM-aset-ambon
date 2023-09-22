@@ -59,7 +59,7 @@
                     </div>
                     <div class="form-group">
                         <label for="jaminan">Jaminan<span style="color: red">*</span></label>
-                        <input type="text" name="jaminan" value="{{ old('jaminan') }}" class="form-control @error('jaminan') is-invalid @enderror" id="jaminan" required>
+                        <textarea type="text" name="jaminan" value="{{ old('jaminan') }}" class="form-control @error('jaminan') is-invalid @enderror" id="jaminan" required></textarea>
                         @error('jaminan')
                         <div class="invalid-feedback">
                             {{ $message }}
