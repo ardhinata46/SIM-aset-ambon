@@ -25,7 +25,6 @@
                             <th>Nama Peminjam</th>
                             <th>Kontak</th>
                             <th>Alamat</th>
-                            <th>Jaminan</th>
                             <th>Status</th>
                             <th>Aksi</th>
                         </tr>
@@ -39,7 +38,6 @@
                             <td>{{$row->nama_peminjam}}</td>
                             <td>{{$row->kontak}}</td>
                             <td>{{$row->alamat}}</td>
-                            <td>{{$row->jaminan}}</td>
                             <td>
                                 @if($row->status == 0)
                                 <span class=" badge badge-danger">Belum Dikembalikan</span>

@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('nama_peminjam');
             $table->string('kontak');
             $table->string('alamat');
-            $table->string('jaminan');
             $table->tinyInteger('created_by');
             $table->tinyInteger('updated_by')->nullable();
             $table->timestamps();

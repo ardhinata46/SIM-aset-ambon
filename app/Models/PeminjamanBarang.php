@@ -17,7 +17,6 @@ class PeminjamanBarang extends Model
         'nama_peminjam',
         'kontak',
         'alamat',
-        'jaminan',
         'created_by',
         'updated_by'
     ];

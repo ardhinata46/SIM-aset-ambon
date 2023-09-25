@@ -94,9 +94,9 @@ Route::group(
             Route::get('/dashboard', [DashboardController::class, 'index'])->name('superadmin.dashboard.index');
 
             // Route kelola dashboard
-            Route::get('/profil-gereja', [ProfilController::class, 'index'])->name('superadmin.profil.index');
-            Route::get('/profil-gereja/edit', [ProfilController::class, 'edit'])->name('superadmin.profil.edit');
-            Route::post('/profil-gereja/update', [ProfilController::class, 'update'])->name('superadmin.profil.update');
+            Route::get('/profil-sttii', [ProfilController::class, 'index'])->name('superadmin.profil.index');
+            Route::get('/profil-sttii/edit', [ProfilController::class, 'edit'])->name('superadmin.profil.edit');
+            Route::post('/profil-sttii/update', [ProfilController::class, 'update'])->name('superadmin.profil.update');
 
             // Route kelola Pengguna
             Route::get('/pengguna', [PenggunaController::class, 'index'])->name('superadmin.pengguna.index');

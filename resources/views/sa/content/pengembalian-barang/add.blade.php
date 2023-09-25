@@ -44,7 +44,6 @@
                                             data-nama="{{ $data['nama_peminjam'] }}"
                                             data-kontak="{{ $data['kontak'] }}"
                                             data-alamat="{{ $data['alamat'] }}"
-                                            data-jaminan="{{$data['jaminan']}}"
                                             data-item-barang="{{ json_encode($data['item_barang']) }}">
 
                                         {{$data['kode_peminjaman_barang']}} - {{$data['nama_peminjam']}}
@@ -105,10 +104,6 @@
                                 <th>Status Peminjaman</th>
                                 <td id="status"></td>
                             </tr>
-                            <tr>
-                                <th>Jaminan</th>
-                                <td id="jaminan"></td>
-                            </tr>
                         </table>
                     </div>
                 </div>
@@ -152,7 +147,6 @@
                 const kontak = selectedOption.getAttribute('data-kontak');
                 const alamat = selectedOption.getAttribute('data-alamat');
                 const status = selectedOption.getAttribute('data-status');
-                const jaminan = selectedOption.getAttribute('data-jaminan');
                 document.getElementById('tb-item-barang').innerText = '';
 
 
@@ -163,7 +157,6 @@
                 document.getElementById('kontak').innerText = kontak;
                 document.getElementById('alamat').innerText = alamat;
                 document.getElementById('status').innerText = status;
-                document.getElementById('jaminan').innerText = jaminan;
 
                 const item_barang = selectedOption.getAttribute('data-item-barang');
                 const itemBarang = JSON.parse(item_barang);

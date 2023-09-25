@@ -57,15 +57,6 @@
                         </div>
                         @enderror
                     </div>
-                    <div class="form-group">
-                        <label for="jaminan">Jaminan<span style="color: red">*</span></label>
-                        <textarea type="text" name="jaminan" value="{{ old('jaminan') }}" class="form-control @error('jaminan') is-invalid @enderror" id="jaminan" required></textarea>
-                        @error('jaminan')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                    </div>
                 </div>
             </div>
         </div>
