@@ -16,9 +16,8 @@
                     <thead class="thead-light">
                         <tr>
                             <th>No</th>
-                            <th>Kode Item Barang</th>
-                            <th>Nama Item barang</th>
                             <th>Kode Peminjaman</th>
+                            <th>Nama Item barang</th>
                             <th>Nama Peminjam</th>
                             <th>Tanggal Peminjaman</th>
                         </tr>
@@ -27,9 +26,8 @@
                         @foreach ($items as $key => $item)
                         <tr>
                             <td>{{ $key + 1 }}</td>
-                            <td>{{ $item->kode_item_barang }}</td>
-                            <td>{{ $item->nama_item_barang }}</td>
                             <td>{{ $item->kode_peminjaman_barang }}</td>
+                            <td>{{ $item->nama_item_barang }}</td>
                             <td>{{ $item->nama_peminjam }}</td>
                             <td>{{ $item->tanggal }}</td>
                         </tr>

@@ -17,11 +17,11 @@ class ProfilSeeder extends Seeder
     {
         DB::table('profils')->insert([
             [
-                'nama_aplikasi' => 'SINV GPIBI AA',
-                'nama_organisasi' => 'Gereja Perhimpunan Injili Baptis Indonesia "AMANAT AGUNG" Kalasan',
-                'alamat' => 'Jl. Cupuwatu II No.07/02, Cupuwatu I, Purwomartani, Kec. Kalasan, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55571',
+                'nama_aplikasi' => 'SIMA STTII Ambon',
+                'nama_organisasi' => 'STTII Ambon',
+                'alamat' => 'Jl Raya Sisingamangaraja - Waitatiri - Suli',
                 'logo' => 'logo.jpg',
-                'email' => 'email@gmail.com',
+                'email' => 'admin@sttii-ambon.ac.id',
                 'updated_by' => 1,
 
             ],
