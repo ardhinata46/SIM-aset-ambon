@@ -60,7 +60,6 @@ class PeminjamanBarangController extends Controller
             $peminjamanBarang->kontak = $request->kontak;
             $peminjamanBarang->tanggal = $request->tanggal;
             $peminjamanBarang->alamat = $request->alamat;
-            $peminjamanBarang->jaminan = $request->jaminan;
             $peminjamanBarang->created_by = Auth::guard('superadmin')->user()->id_pengguna;
 
             $peminjamanBarang->save();
@@ -122,7 +121,6 @@ class PeminjamanBarangController extends Controller
         $peminjamanBarang->kontak = $request->kontak;
         $peminjamanBarang->tanggal = $request->tanggal;
         $peminjamanBarang->alamat = $request->alamat;
-        $peminjamanBarang->jaminan = $request->jaminan;
         $peminjamanBarang->created_by = $created;
         $peminjamanBarang->updated_by = Auth::guard('superadmin')->user()->id_pengguna;
 
@@ -193,7 +191,7 @@ class PeminjamanBarangController extends Controller
 
             $pengembalianBarang->save();
 
-            // Perbarui status peminjaman 
+            // Perbarui status peminjaman
             $statusPeminjaman = PeminjamanBarang::findOrFail($id_peminjaman_barang);
             $statusPeminjaman->status = $pengembalianBarang->status ?? 1;
             $statusPeminjaman->save();
@@ -221,4 +219,4 @@ class PeminjamanBarangController extends Controller
         return view('sa.content.peminjaman-barang.belumKembali', compact('title', 'items'));
     }
 }
-//dd($e->getMessage()); 
+//dd($e->getMessage());
