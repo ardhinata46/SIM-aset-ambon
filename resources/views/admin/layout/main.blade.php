@@ -240,9 +240,7 @@
           <div class="copyright text-center my-auto">
             <span>copyright &copy; <script>
                 document.write(new Date().getFullYear());
-              </script> - developed by
-              <b><a href="https://www.instagram.com/berkati.t__/" target="_blank">Berkati Telaumbanua</a></b>
-            </span>
+              </script> STTII Ambon | All Rights Reserved</span>
           </div>
         </div>
       </footer>

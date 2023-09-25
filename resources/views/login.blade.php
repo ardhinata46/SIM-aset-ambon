@@ -13,9 +13,13 @@
     </form>
 </div>
 <div class="form-container sign-in-container">
+
     <form method="POST" action="{{ route('auth.verify') }}">
+        <div>
+            <img class="logo" src="{{ asset($profil->logo) }}">
+        </div>
         @csrf
-        <h2 class="mb-4">Login</h2><br><br>
+        <h3 class="mb-4">SIMA STTII AMBON</h3><br>
         <span class="mb-6">Masukan Email & Password</span>
         <input type="email" name="email" placeholder="Email" required />
         <input type="password" name="password" placeholder="Password" required />
