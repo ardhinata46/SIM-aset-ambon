@@ -101,6 +101,16 @@
 
     // Tambahkan event listener pada select dengan id "id_item_barang"
     document.getElementById('id_item_barang').addEventListener('change', handleSelectChange);
+
+    document.querySelector('form').addEventListener('submit', function(event) {
+        const ruanganAwalId = document.getElementById('idRuangan').value;
+        const ruanganTujuanId = document.getElementById('ruangan_tujuan').value;
+
+        if (ruanganAwalId === ruanganTujuanId) {
+            alert('Ruangan awal dan ruangan tujuan tidak boleh sama.');
+            event.preventDefault(); 
+        }
+    });
 </script>
 
 
